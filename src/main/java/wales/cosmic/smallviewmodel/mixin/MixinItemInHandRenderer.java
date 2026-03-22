@@ -1,5 +1,6 @@
 package wales.cosmic.smallviewmodel.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.player.AbstractClientPlayer;
@@ -71,6 +72,19 @@ public abstract class MixinItemInHandRenderer {
         if (position.enabled) {
             poseStack.translate(position.x, position.y, position.z);
         }
+    }
+
+    @ModifyExpressionValue(
+            method = "tick",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/player/LocalPlayer;getItemSwapScale(F)F"
+            )
+    )
+    public float smallviewmodel$tick(
+            float original
+    ) {
+        return 1f;
     }
 
 }

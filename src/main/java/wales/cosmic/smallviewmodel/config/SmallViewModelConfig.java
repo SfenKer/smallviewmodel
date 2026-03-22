@@ -8,6 +8,7 @@ import com.moulberry.lattice.annotation.LatticeFormatValues;
 import com.moulberry.lattice.annotation.LatticeOption;
 import com.moulberry.lattice.annotation.constraint.LatticeDisableIf;
 import com.moulberry.lattice.annotation.constraint.LatticeFloatRange;
+import com.moulberry.lattice.annotation.constraint.LatticeIntRange;
 import com.moulberry.lattice.annotation.widget.LatticeWidgetButton;
 import com.moulberry.lattice.annotation.widget.LatticeWidgetSlider;
 import net.fabricmc.loader.api.FabricLoader;
@@ -32,6 +33,9 @@ public class SmallViewModelConfig {
 
     @LatticeCategory(name = "smallviewmodel.arm")
     public Arm arm = new Arm();
+
+    @LatticeCategory(name = "smallviewmodel.swing_animation")
+    public Swing swing = new Swing();
 
     public static class MainHand {
 
@@ -162,6 +166,24 @@ public class SmallViewModelConfig {
         private boolean checkDisabled() {
             return !this.enabled;
         }
+    }
+
+    public static class Swing {
+
+        @LatticeOption(title = "smallviewmodel.swing.duration")
+        @LatticeDisableIf(function = "checkDisabled", frequency = LatticeDynamicFrequency.EVERY_TICK)
+        @LatticeIntRange(min = 1, max = 20, clampMin = 1, clampMax = 20)
+        @LatticeWidgetSlider
+        public int swingDuration = 6;
+
+        @LatticeOption(title = "smallviewmodel.enabled")
+        @LatticeWidgetButton
+        public boolean enabled = true;
+
+        private boolean checkDisabled() {
+            return !this.enabled;
+        }
+
     }
 
     public static SmallViewModelConfig get() {
