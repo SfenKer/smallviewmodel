@@ -4,9 +4,8 @@
   "package": "wales.cosmic.smallviewmodel.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MixinLocalPlayer",
     "MixinItemInHandRenderer"
-  ],
-  "client": [
   ],
   "injectors": {
     "defaultRequire": 1

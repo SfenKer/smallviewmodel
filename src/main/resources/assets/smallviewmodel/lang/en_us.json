@@ -15,5 +15,7 @@
   "smallviewmodel.scale": "Scale",
   "smallviewmodel.scale.x": "X Scale",
   "smallviewmodel.scale.y": "Y Scale",
-  "smallviewmodel.scale.z": "Z Scale"
+  "smallviewmodel.scale.z": "Z Scale",
+  "smallviewmodel.swing_animation": "Swing Animation Settings",
+  "smallviewmodel.swing.duration": "Animation Duration"
 }
